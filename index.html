@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ιερό Άντρο των Νυμφών & του Πάνα</title>
+    <style>
+        :root {
+            --primary-green: #228B22;
+            --secondary-brown: #8B4513;
+            --dark-brown: #483C32;
+            --light-green: #3CB371;
+            --light-gray: #f4f7f6;
+            --medium-gray: #e0e0e0;
+        }
+        
+        body {
+            font-family: 'Georgia', serif;
+            color: #333;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            /* Background που μοιάζει με παλιό χαρτί πάπυρου */
+            background-color: #f5e9d4;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23d4c4a8' fill-opacity='0.4' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+
+        .presentation-container {
+            background: #f5e9d4;
+            border: 3px solid var(--secondary-brown);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
+            padding: 30px;
+            box-sizing: border-box;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        /* Header Δήμου Φαρσάλων */
+        .municipality-header {
+            position: absolute;
+            top: 10px;
+            left: 15px;
+            font-size: 0.8em;
+            color: #5d4037;
+            font-weight: bold;
+            letter-spacing: 1px;
+            z-index: 10;
+        }
+
+        h1 {
+            text-align: center;
+            color: var(--primary-green);
+            border-bottom: 2px solid #d4c4a8;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            font-size: 2em;
+            margin-top: 20px;
+        }
+
+        h2 {
+            color: var(--dark-brown);
+            font-size: 1.8em;
+            border-left: 5px solid var(--primary-green);
+            padding-left: 15px;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            color: #333;
+            font-size: 1.4em;
+            margin-top: 15px;
+        }
+
+        /* Διαχείριση Σελίδων (Slides) */
+        .slide {
+            display: none;
+            min-height: 350px;
+            padding: 10px;
+            animation: fadeIn 0.8s;
+        }
+
+        .active-slide {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Κουμπιά Πλοήγησης */
+        .navigation-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 30px;
+            padding: 0 10px;
+            gap: 20px;
+        }
+
+        .nav-buttons {
+            display: flex;
+            flex: 1;
+        }
+
+        #prev-btn {
+            margin-right: auto;
+        }
+
+        #next-btn {
+            margin-left: auto;
+        }
+
+        button {
+            background-color: var(--primary-green);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+            white-space: nowrap;
+        }
+
+        button:hover:not(:disabled) {
+            background-color: var(--light-green);
+        }
+
+        button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+        }
+
+        #central-btn {
+            background-color: var(--secondary-brown);
+            display: block;
+            margin: 10px auto;
+        }
+
+        #central-btn:hover {
+            background-color: #a0522d;
+        }
+
+        /* Ενδείξεις Σελίδας */
+        #page-indicator {
+            font-weight: bold;
+            color: var(--dark-brown);
+            text-align: center;
+            flex-shrink: 0;
+            min-width: 120px;
+        }
+
+        /* Ειδική μορφοποίηση περιεχομένου */
+        ul {
+            list-style: disc;
+            margin-left: 20px;
+            padding-left: 0;
+        }
+
+        .image-placeholder {
+            background-color: rgba(212, 196, 168, 0.5);
+            border: 1px dashed #8B4513;
+            text-align: center;
+            padding: 15px;
+            margin-top: 15px;
+            font-style: italic;
+            color: #5d4037;
+            min-height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 5px;
+        }
+
+        .content-flex, .two-columns {
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .content-flex .text-content {
+            flex: 1;
+        }
+
+        .content-flex .image-placeholder {
+            flex: 1;
+        }
+
+        .two-columns .god-card {
+            flex: 1;
+            border: 1px solid #d4c4a8;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .cta {
+            font-size: 1.1em;
+            text-align: center;
+            font-weight: bold;
+            color: var(--secondary-brown);
+            padding: 10px;
+            border: 2px dashed var(--secondary-brown);
+            margin-top: 30px;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Προσθήκη στυλ για bold κείμενο */
+        strong {
+            font-weight: bold;
+            color: #5d4037;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .presentation-container {
+                width: 95%;
+                padding: 15px;
+            }
+            
+            h1 {
+                font-size: 1.6em;
+            }
+            
+            .content-flex, .two-columns {
+                flex-direction: column;
+            }
+            
+            .two-columns .god-card {
+                margin-bottom: 15px;
+            }
+            
+            .navigation-controls {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            #page-indicator {
+                order: 3;
+                flex-basis: 100%;
+                margin-top: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="presentation-container">
+        <!-- Header Δήμου Φαρσάλων -->
+        <div class="municipality-header">ΔΗΜΟΣ ΦΑΡΣΑΛΩΝ 2025</div>
+        
+        <h1>🌿 Το Ιερό Άντρο των Νυμφών & του Πάνα (Σπήλαιο Καράπλα)</h1>
+        
+        <div id="slides-container">
+            
+            <div class="slide active-slide" id="slide1">
+                <h2>1. Καλωσόρισμα στο Αρχαίο Ιερό</h2>
+                <p>Σας καλωσορίζουμε σε ένα από τα πιο συναρπαστικά αρχαιολογικά μνημεία της Θεσσαλίας. Το <strong>Σπήλαιο Καράπλα</strong>, κοντά στα Φάρσαλα, ήταν στην αρχαιότητα ένας ιερός τόπος αφιερωμένος σε θεότητες της φύσης.</p>
+                <div class="image-placeholder">[Εικόνα εξωτερικής όψης Σπηλαίου Καράπλα]</div>
+            </div>
+
+            <div class="slide" id="slide2">
+                <h2>2. Η Ονομασία "Καράπλα" - Μέρος 1</h2>
+                <p>Το όνομα του σπηλαίου, <strong>"Καράπλα"</strong> (ή μερικές φορές αναφέρεται ως <strong>"Καράμπλα"</strong>), είναι ένα σύγχρονο τοπωνύμιο που δεν έχει σχέση με την αρχαία του ονομασία ως <strong>"Ιερό Άντρο των Νυμφών και του Πάνα"</strong>.</p>
+                
+                <p>Η ονομασία <strong>"Καράπλα"</strong> είναι τουρκικής προέλευσης, όπως συμβαίνει με πολλά τοπωνύμια στην Ελλάδα, ιδιαίτερα σε ορεινές περιοχές της Θεσσαλίας που πέρασαν από Οθωμανική κυριαρχία.</p>
+                
+                <p>Αν και δεν υπάρχει μια ενιαία, επίσημη ερμηνεία, το όνομα πιθανότατα προέρχεται από τις τουρκικές λέξεις:</p>
+                
+                <ul>
+                    <li><strong>"Kara" (Καρά)</strong>: που σημαίνει <strong>"μαύρος"</strong>, <strong>"σκοτεινός"</strong> ή μερικές φορές <strong>"μεγάλος"</strong> / <strong>"ισχυρός"</strong>.</li>
+                </ul>
+                
+                <div class="image-placeholder">[Εικόνα του λόφου Καράπλα]</div>
+            </div>
+
+            <div class="slide" id="slide3">
+                <h2>3. Η Ονομασία "Καράπλα" - Μέρος 2</h2>
+                <p>Συνέχεια από προηγούμενη σελίδα:</p>
+                
+                <ul>
+                    <li><strong>"Pala" (Πάλα)</strong> ή <strong>"Bala" (Μπάλα)</strong>: η οποία μπορεί να σημαίνει <strong>"παιδί"</strong> ή μπορεί να συνδέεται με τη λέξη <strong>"πέτρα"</strong> ή <strong>"βράχος"</strong> (αν και η ακριβής σύνθεση είναι πιο δύσκολη).</li>
+                </ul>
+                
+                <p>Η επικρατέστερη ερμηνεία, βασισμένη στην εμφάνιση του τοπίου, είναι ότι το όνομα Καράπλα δόθηκε στο λόφο/όρος όπου βρίσκεται το σπήλαιο, και υποδηλώνει τον <strong>"Μαύρο/Σκοτεινό Βράχο"</strong> ή την <strong>"Μεγάλη Πλαγιά"</strong> λόγω της επιβλητικής, σκούρας όψης του βράχου, στο εσωτερικό του οποίου βρίσκεται το σπήλαιο.</p>
+                
+                <p>Η σύνθεση των λέξεων <strong>"Kara"</strong> και <strong>"Pala/Bala"</strong> δημιουργεί μια περιγραφική ονομασία που ανταποκρίνεται στο φυσικό περιβάλλον του σπηλαίου.</p>
+            </div>
+
+            <div class="slide" id="slide4">
+                <h2>4. Θέση & Ιστορική Χρήση</h2>
+                <div class="content-flex">
+                    <div class="text-content">
+                        <h3>📍 Πού βρισκόμαστε;</h3>
+                        <p>Το σπήλαιο βρίσκεται στον λόφο <strong>Καράπλα</strong> (ή Καράμπλα), 4 χλμ. νοτιοδυτικά των Φαρσάλων, πάνω από την κοιλάδα του Ενιπέα ποταμού.</p>
+                        <h3>⏳ Πότε χρησιμοποιήθηκε;</h3>
+                        <ul>
+                            <li><strong>Αρχαϊκή Εποχή</strong> (τέλη 6ου αι. π.Χ.): Έναρξη λατρείας.</li>
+                            <li><strong>Κλασική - Ελληνιστική Εποχή:</strong> Περίοδος ακμής (5ος-2ος αι. π.Χ.).</li>
+                        </ul>
+                    </div>
+                    <div class="image-placeholder">[Χάρτης περιοχής Φαρσάλων με ένδειξη Καράπλα]</div>
+                </div>
+            </div>
+
+            <div class="slide" id="slide5">
+                <h2>5. Οι Θεοί του Άντρου - Μέρος 1</h2>
+                <div class="god-card">
+                    <h3>🐐 Ο Θεός Πάνας</h3>
+                    <p>Ο <strong>Πάνας</strong> ήταν ο θεός των ποιμνίων, των βοσκών και της άγριας φύσης. Λατρευόταν ως προστάτης των κοπαδιών και των βουκολικών δραστηριοτήτων. Το σπήλαιο ήταν ιδανικός χώρος για την εκδήλωση της λατρείας του.</p>
+                    <p>Σύμφωνα με τη μυθολογία, ο Πάνας ήταν γιος του Ερμή και της νύμφης Δρυόπης. Απεικονιζόταν με κατσαρόμαλλη μορφή, κέρατα και πόδια τράγου, συμβολίζοντας τη σύνδεσή του με τη φύση και τα ζώα.</p>
+                    <p>Στο σπήλαιο Καράπλα, οι αρχαίοι πιστοί προσέφεραν αναθήματα στον Πάνα, ζητώντας την προστασία των κοπαδιών τους και την ευημερία των αγροτικών καλλιεργειών.</p>
+                    <div class="image-placeholder">[Εικόνα Πάνα από ανάγλυφο]</div>
+                </div>
+            </div>
+
+            <div class="slide" id="slide6">
+                <h2>6. Οι Θεοί του Άντρου - Μέρος 2</h2>
+                <div class="god-card">
+                    <h3>💧 Οι Νύμφες</h3>
+                    <p>Οι <strong>Νύμφες</strong> ήταν οι κατώτερες θεότητες των σπηλαίων και των πηγών. Αποτελούσαν το αρχαιότερο αντικείμενο λατρείας στο σπήλαιο, λαμβάνοντας αφιερώματα για την υγεία και τη γονιμότητα.</p>
+                    <p>Οι Νύμφες αντιπροσώπευαν τις δυνάμεις της φύσης και συνδέονταν με συγκεκριμένα μέρη - πηγές, δάση, βουνά και σπήλαια. Στο σπήλαιο Καράπλα, οι Νύμφες λατρεύονταν ως προστάτιδες της πηγής που υπήρχε στο εσωτερικό του.</p>
+                    <p>Οι πιστοί προσέφεραν στις Νύμφες μικρά αναθήματα, όπως πήλινα ειδώλια και κοσμήματα, ζητώντας καλό γάμο, ευλογία στην οικογένεια και υγεία.</p>
+                    <div class="image-placeholder">[Εικόνα Νυμφών από ανάγλυφο]</div>
+                </div>
+            </div>
+            
+            <div class="slide" id="slide7">
+                <h2>7. Τα Μυστικά των Ευρημάτων</h2>
+                <p>Οι ανασκαφές της Ιταλικής Αρχαιολογικής Σχολής (1922) έφεραν στο φως μοναδικούς θησαυρούς:</p>
+                <ul>
+                    <li><strong>Επιγραφές:</strong> Δύο σημαντικές επιγραφές χαραγμένες στο βράχο. Η μία αναφέρει τον <strong>Παντάλκη</strong>, ο οποίος διαμόρφωσε το ιερό (5ος αι. π.Χ.).</li>
+                    <li><strong>Αναθήματα:</strong> Πλήθος χάλκινων και πήλινων αντικειμένων, όπως γυναικεία ειδώλια, ειδώλια Πάνα, καθώς και μία μικρή <strong>χρυσή αναθηματική κλίνη</strong>.</li>
+                    <li><strong>Άλλοι Θεοί:</strong> Επιγραφή του 4ου αι. π.Χ. δείχνει διεύρυνση της λατρείας, περιλαμβάνοντας τον <strong>Απόλλωνα</strong>, τον <strong>Χείρωνα</strong> (Κένταυρο) και τον <strong>Ασκληπιό</strong>.</li>
+                </ul>
+                <div class="image-placeholder">[Εικόνα αρχαίας επιγραφής στο βράχο]</div>
+            </div>
+
+            <div class="slide" id="slide8">
+                <h2>8. Επίλογος</h2>
+                <p>Το Σπήλαιο Καράπλα, ως Ιερό Άντρο, αποτελεί ένα ζωντανό παράθυρο στην αρχαία Θεσσαλία, αποκαλύπτοντας τον βαθύ δεσμό των κατοίκων με τη φύση και τις αγροτικές θεότητες.</p>
+                <p>Η λατρεία του Πάνα και των Νυμφών στο σπήλαιο Καράπλα αποτελεί μαρτυρία για τη θρησκευτική ζωή των κατοίκων της αρχαίας Θεσσαλίας και την αλληλεπίδρασή τους με το φυσικό περιβάλλον.</p>
+                <p class="cta">Σας ευχαριστούμε για το ταξίδι! Επισκεφθείτε την <strong>Αρχαιολογική Συλλογή Φαρσάλων</strong> για να δείτε τα ευρήματα από κοντά.</p>
+            </div>
+        </div>
+
+        <div class="navigation-controls">
+            <button id="prev-btn" disabled>« Προηγούμενο</button>
+            <div id="page-indicator"></div>
+            <button id="next-btn">Επόμενο »</button>
+        </div>
+        
+        <button id="central-btn">Κεντρική Σελίδα</button>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const centralBtn = document.getElementById('central-btn');
+            const pageIndicator = document.getElementById('page-indicator');
+            let currentSlideIndex = 0;
+            
+            // Συνολικός αριθμός σελίδων
+            const totalSlides = slides.length;
+
+            /**
+             * Εμφανίζει τη συγκεκριμένη σελίδα (slide)
+             * και ενημερώνει την κατάσταση των κουμπιών και της ένδειξης σελίδας.
+             */
+            function showSlide(index) {
+                // Απενεργοποίηση της τρέχουσας σελίδας
+                slides.forEach(slide => {
+                    slide.classList.remove('active-slide');
+                });
+
+                // Ενεργοποίηση της νέας σελίδας
+                if (slides[index]) {
+                    slides[index].classList.add('active-slide');
+                    currentSlideIndex = index;
+                    updateControls();
+                }
+            }
+
+            /**
+             * Ενημερώνει την κατάσταση των κουμπιών και την ένδειξη σελίδας.
+             */
+            function updateControls() {
+                // Διαχείριση κουμπιού "Προηγούμενο"
+                prevBtn.disabled = (currentSlideIndex === 0);
+                
+                // Διαχείριση κουμπιού "Επόμενο"
+                nextBtn.disabled = (currentSlideIndex === totalSlides - 1);
+
+                // Ενημέρωση ένδειξης σελίδας
+                pageIndicator.textContent = `Σελίδα ${currentSlideIndex + 1} από ${totalSlides}`;
+            }
+
+            // Προσθήκη Listeners στα κουμπιά
+            prevBtn.addEventListener('click', function() {
+                if (currentSlideIndex > 0) {
+                    showSlide(currentSlideIndex - 1);
+                }
+            });
+
+            nextBtn.addEventListener('click', function() {
+                if (currentSlideIndex < totalSlides - 1) {
+                    showSlide(currentSlideIndex + 1);
+                }
+            });
+            
+            // Κουμπί Κεντρικής Σελίδας
+            centralBtn.addEventListener('click', function() {
+                showSlide(0);
+            });
+
+            // Προσθήκη πλοήγησης με πλήκτρα πληκτρολογίου
+            document.addEventListener('keydown', function(event) {
+                if (event.key === 'ArrowLeft') {
+                    // Πλοήγηση προς τα πίσω
+                    if (currentSlideIndex > 0) {
+                        showSlide(currentSlideIndex - 1);
+                    }
+                } else if (event.key === 'ArrowRight') {
+                    // Πλοήγηση προς τα εμπρός
+                    if (currentSlideIndex < totalSlides - 1) {
+                        showSlide(currentSlideIndex + 1);
+                    }
+                }
+            });
+
+            // Εκκίνηση της παρουσίασης
+            showSlide(currentSlideIndex);
+        });
+    </script>
+</body>
+</html>
