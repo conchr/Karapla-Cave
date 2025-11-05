@@ -325,7 +325,7 @@
             
             <div class="slide active-slide" id="slide1">
                 <h2>1. Καλωσόρισμα στο Αρχαίο Ιερό</h2>
-                <p>Σας καλωσορίζουμε σε ένα από τα πιο συναρπαστικά αρχαιολογικά μνημεία της Θεσσαλίας. Το <strong>Σπήλαιο Καράπλα</strong>, κοντά στα Φάρσαλα, ήταν στην αρχαιότητα ένας ιερός τόπος αφιερωμένος σε θεότητες της φύσης.</p>
+                <p>Σας καλωσορίζουμε σε ένα από τα πιο συναρπαστικά αρχαιολογικά μνημεία της Θεσσαλίας. Το <strong>Σπήλαιο Καράпλα</strong>, κοντά στα Φάρσαλα, ήταν στην αρχαιότητα ένας ιερός τόπος αφιερωμένος σε θεότητες της φύσης.</p>
                 <img src="https://github.com/conchr/Karapla-Cave/blob/main/%CE%BA%CE%B1%CF%81%CE%B1%CF%80%CE%BB%CE%B11.jpg?raw=true" 
                      alt="Εξωτερική όψη Σπηλαίου Καράπλα" 
                      class="slide-image"
@@ -493,9 +493,9 @@
                 }
             });
             
-            // Κουμπί Κεντρικής Σελίδας
+            // Κουμπί Κεντρικής Σελίδας - ΤΡΟΠΟΠΟΙΗΣΗ: Ανοίγει στον ίδιο tab
             centralBtn.addEventListener('click', function() {
-                showSlide(0);
+                window.location.href = 'https://conchr.github.io/Farsala-Center-Page/';
             });
 
             // Προσθήκη πλοήγησης με πλήκτρα πληκτρολογίου
@@ -555,7 +555,7 @@
 
             // Ενεργοποίηση της νέας σελίδας
             if (slides[index]) {
-                slides[index].classList.add('active-slide');
+                slides[index].classileList.add('active-slide');
                 currentSlideIndex = index;
                 
                 // Ενημέρωση ελέγχων
